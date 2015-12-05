@@ -81,7 +81,9 @@
     <Compile Include="Model\Issues\SharedFile.cs" />
     <Compile Include="Model\Issues\Star.cs" />
     <Compile Include="Model\Issues\Status.cs" />
+    <Compile Include="Model\Projects\Activitie.cs" />
     <Compile Include="Model\Projects\Category.cs" />
+    <Compile Include="Model\Projects\Content.cs" />
     <Compile Include="Model\Projects\CustomField.cs" />
     <Compile Include="Model\Projects\DiskUsage.cs" />
     <Compile Include="Model\Projects\Project.cs" />
