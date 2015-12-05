@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using CSJSONBacklog.Communicator;
 using CSJSONBacklog.Model.Issues;
+using CSJSONBacklog.Model.Space;
 
 namespace CSJSONBacklogSample
 {
@@ -37,16 +38,134 @@ namespace CSJSONBacklogSample
         {
             var getInfoSample = new GetInfoSample(spaceName, apiKey);
 
-            // print projects
+            var users = getInfoSample.GetSpaceUsers().ToList();
+            var userdic = new Dictionary<string, User>();
+            var counter = new Dictionary<string, int>();
+
+            // init user-project counter
+            foreach (var user in users)
+            {
+                userdic.Add(user.UserId, user);
+                counter.Add(user.UserId, 0);
+            }
+
+            // get project list
             var projects = getInfoSample.GetProjects().ToList();
-            getInfoSample.PrintProjectDetails(projects);
+
+            // check the user who does not belong to a project
+            var projectCommunicator = new ProjectCommunicator(spaceName, apiKey);
+
+            foreach (var project in projects)
+            {
+                var projectusers = projectCommunicator.GetProjectUserList(project.ProjectKey);
+
+                foreach (var user in projectusers)
+                {
+                    int count;
+
+                    if (counter.TryGetValue(user.UserId, out count))
+                    {
+                        count++;
+                        counter[user.UserId] = count;
+                    }
+                }
+            }
+
+            Console.WriteLine("■プロジェクト未参加ユーザーの表示");
+            foreach (var user in users)
+            {
+                int count;
+
+                if (counter.TryGetValue(user.UserId, out count))
+                {
+                    if (count == 0)
+                    {
+                        User zerouser;
+
+                        if (userdic.TryGetValue(user.UserId, out zerouser))
+                        {
+                            Console.WriteLine(zerouser);
+                        }
+                    }
+                }
+            }
+
+            Console.WriteLine("■メンバーの居ないグループ");
+            var groups = getInfoSample.GetGroups().ToList();
+
+            foreach (var group in groups)
+            {
+                if (group.Members.Count == 0)
+                {
+                    Console.WriteLine(group);
+                }
+            }
+
+            Console.WriteLine("■直近1ヶ月にアクセスの無いプロジェクト");
+            var date = DateTime.Now.AddMonths(-1);
+
+            foreach (var project in projects)
+            {
+                var activities = projectCommunicator.GetProjectRecentUpdates(project.ProjectKey);
+
+                bool work = false;
+
+                foreach (var activitie in activities)
+                {
+                    if (date < activitie.Created)
+                    {
+                        work = true;
+                    }
+                }
+                if (!work)
+                {
+                    Console.WriteLine(project);
+
+                    if (activities.Count() > 1)
+                    {
+                        Console.WriteLine(activities.First());
+                    }
+                }
+            }
+
+            Console.WriteLine("■1年間にアクセスの無いプロジェクト");
+            date = DateTime.Now.AddYears(-1);
+
+            foreach (var project in projects)
+            {
+                var activities = projectCommunicator.GetProjectRecentUpdates(project.ProjectKey);
+
+                bool work = false;
+
+                foreach (var activitie in activities)
+                {
+                    if (date < activitie.Created)
+                    {
+                        work = true;
+                    }
+                }
+                if (!work)
+                {
+                    Console.WriteLine(project);
+
+                    if (activities.Count() > 1)
+                    {
+                        Console.WriteLine(activities.First());
+                    }
+                }
+            }
+
+            //getInfoSample.PrintProjectDetails(projects);
+
+            // print groups
+            //var groups = getInfoSample.GetGroups().ToList();
 
             // print issues
-            foreach (var project in projects.Where(x => x.ProjectKey.Equals("SND")))
-            {
-                var issues = getInfoSample.GetIssues(project);
-                getInfoSample.PrintIssues(issues);
-            }
+            //foreach (var project in projects.Where(x => x.ProjectKey.Equals("SND")))
+            //{
+            //    var issues = getInfoSample.GetIssues(project);
+            //    getInfoSample.PrintIssues(issues);
+            //}
         }
 
 

@@ -35,6 +35,18 @@ namespace CSJSONBacklogSample
         }
 
         /// <summary>
+        /// get all user info in space
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<User> GetSpaceUsers()
+        {
+            var spaceCommunicator = new SpaceCommunicator(_spaceName, _apiKey);
+            var users = spaceCommunicator.GetUserList().ToList();
+
+            return users;
+        }
+
+        /// <summary>
         /// get all group info in space
         /// </summary>
         public IEnumerable<Group> GetGroups()
