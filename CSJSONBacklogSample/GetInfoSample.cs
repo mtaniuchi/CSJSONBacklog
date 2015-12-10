@@ -7,6 +7,7 @@ using System.Linq;
 using CSJSONBacklog.Communicator;
 using CSJSONBacklog.Model.Issues;
 using CSJSONBacklog.Model.Projects;
+using CSJSONBacklog.Model.Space;
 
 namespace CSJSONBacklogSample
 {
@@ -31,6 +32,28 @@ namespace CSJSONBacklogSample
             var projectCommunicator = new ProjectCommunicator(_spaceName, _apiKey);
             var projects = projectCommunicator.GetProjectList().ToList();
             return projects;
+        }
+
+        /// <summary>
+        /// get all user info in space
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<User> GetSpaceUsers()
+        {
+            var spaceCommunicator = new SpaceCommunicator(_spaceName, _apiKey);
+            var users = spaceCommunicator.GetUserList().ToList();
+
+            return users;
+        }
+
+        /// <summary>
+        /// get all group info in space
+        /// </summary>
+        public IEnumerable<Group> GetGroups()
+        {
+            var spaceCommunicator = new SpaceCommunicator(_spaceName, _apiKey);
+            var groups = spaceCommunicator.GetGroupList().ToList();
+            return groups;
         }
 
         /// <summary>

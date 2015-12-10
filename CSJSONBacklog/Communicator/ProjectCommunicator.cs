@@ -129,9 +129,9 @@ namespace CSJSONBacklog.Communicator
         /// Returns recent update in the project.
         /// </summary>
         /// <see cref="http://developer.nulab-inc.com/docs/backlog/api/2/get-project-activities"/>
-        public object GetProjectRecentUpdate()
+        public IEnumerable<Activitie> GetProjectRecentUpdates(string projectIdOrKey)
         {
-            throw new System.NotImplementedException();
+            return GetT<IEnumerable<Activitie>>(string.Format("https://{0}.backlog.jp/api/v2/projects/{1}/activities?apiKey={2}", SpaceKey, projectIdOrKey, ApiKey));
         }
 
         /// <summary>

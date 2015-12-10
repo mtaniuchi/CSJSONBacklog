@@ -29,5 +29,15 @@ namespace CSJSONBacklog.Communicator
         {
             return GetT<IEnumerable<User>>(string.Format("https://{0}.backlog.jp/api/v2/users?apiKey={1}", SpaceKey, ApiKey));
         }
+
+        /// <summary>
+        /// Returns list of groups in your space.
+        /// </summary>
+        /// <see cref="http://developer.nulab-inc.com/docs/backlog/api/2/get-group"/>
+        public IEnumerable<Group> GetGroupList()
+        {
+            return GetT<IEnumerable<Group>>(string.Format("https://{0}.backlog.jp/api/v2/groups?apiKey={1}", SpaceKey, ApiKey));
+        }
     }
 }
+
