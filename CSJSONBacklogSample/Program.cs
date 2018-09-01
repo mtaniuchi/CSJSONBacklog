@@ -19,11 +19,11 @@ namespace CSJSONBacklogSample
         /// </summary>
         static void Main(string[] args)
         {
-            string spaceName = Properties.Settings.Default.SpaceName;// must change!
-            string apiKey = Properties.Settings.Default.APIKey;// must change!
+            string spaceKey = "your-space-key";// must change!
+            string apiKey = "your-api-key";// must change!
 
             // 1.get information
-            EnforceGetSamples(spaceName, apiKey);
+            EnforceGetSamples(spaceKey, apiKey);
 
             // 2.update information
             //SampleOfUpdateIssue(spaceName, apiKey, "PROJ1");
@@ -33,9 +33,9 @@ namespace CSJSONBacklogSample
         /// <summary>
         /// Get API Samples
         /// </summary>
-        private static void EnforceGetSamples(string spaceName, string apiKey)
+        private static void EnforceGetSamples(string spaceKey, string apiKey)
         {
-            var getInfoSample = new GetInfoSample(spaceName, apiKey);
+            var getInfoSample = new GetInfoSample(spaceKey, apiKey);
 
             // print projects
             var projects = getInfoSample.GetProjects().ToList();
