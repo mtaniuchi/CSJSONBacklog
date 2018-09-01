@@ -24,7 +24,7 @@ namespace CSJSONBacklog.Communicator
 
         protected string BaseUri
         {
-            get { return string.Format("https://{0}.backlog.jp/", SpaceKey); }
+            get { return string.Format("https://{0}.backlog.com/", SpaceKey); }
         }
 
         protected T GetT<T>(string uri)
@@ -64,7 +64,6 @@ namespace CSJSONBacklog.Communicator
                 Resource = resource,
             };
             request.AddQueryParameter("apiKey", ApiKey);
-            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
             request.JsonSerializer = new PatchJsonSerializer { ContentType = @"application/json" };
             request.AddJsonBody(value);
 

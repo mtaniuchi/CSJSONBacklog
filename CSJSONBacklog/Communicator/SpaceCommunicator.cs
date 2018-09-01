@@ -18,7 +18,7 @@ namespace CSJSONBacklog.Communicator
         /// <see cref="http://developer.nulab-inc.com/docs/backlog/api/2/get-space"/>
         public Space GetSpace()
         {
-            return GetT<Space>(string.Format("https://{0}.backlog.jp/api/v2/space?apiKey={1}", SpaceKey, ApiKey));
+            return GetT<Space>(string.Format("https://{0}.backlog.com/api/v2/space?apiKey={1}", SpaceKey, ApiKey));
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace CSJSONBacklog.Communicator
         /// <see cref="http://developer.nulab-inc.com/docs/backlog/api/2/get-users"/>
         public IEnumerable<User> GetUserList()
         {
-            return GetT<IEnumerable<User>>(string.Format("https://{0}.backlog.jp/api/v2/users?apiKey={1}", SpaceKey, ApiKey));
+            return GetT<IEnumerable<User>>(string.Format("https://{0}.backlog.com/api/v2/users?apiKey={1}", SpaceKey, ApiKey));
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace CSJSONBacklog.Communicator
         /// <see cref="http://developer.nulab-inc.com/docs/backlog/api/2/get-group"/>
         public IEnumerable<Group> GetGroupList()
         {
-            return GetT<IEnumerable<Group>>(string.Format("https://{0}.backlog.jp/api/v2/groups?apiKey={1}", SpaceKey, ApiKey));
+            return GetT<IEnumerable<Group>>(string.Format("https://{0}.backlog.com/api/v2/groups?apiKey={1}", SpaceKey, ApiKey));
         }
     }
 }

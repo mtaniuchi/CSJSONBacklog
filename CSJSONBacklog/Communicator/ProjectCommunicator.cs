@@ -23,7 +23,7 @@ namespace CSJSONBacklog.Communicator
         /// <see cref="http://developer.nulab-inc.com/docs/backlog/api/2/get-projects"/>
         public IEnumerable<Project> GetProjectList()
         {
-            return GetT<IEnumerable<Project>>(string.Format("https://{0}.backlog.jp/api/v2/projects?apiKey={1}", SpaceKey, ApiKey));
+            return GetT<IEnumerable<Project>>(string.Format("https://{0}.backlog.com/api/v2/projects?apiKey={1}", SpaceKey, ApiKey));
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace CSJSONBacklog.Communicator
         /// <see cref="http://developer.nulab-inc.com/docs/backlog/api/2/get-project"/>
         public Project GetProject(string projectIdOrKey)
         {
-            return GetT<Project>(string.Format("https://{0}.backlog.jp/api/v2/projects/{1}?apiKey={2}", SpaceKey, projectIdOrKey, ApiKey));
+            return GetT<Project>(string.Format("https://{0}.backlog.com/api/v2/projects/{1}?apiKey={2}", SpaceKey, projectIdOrKey, ApiKey));
         }
 
         public Project AddProject(string projectIdOrKey) { throw new System.NotImplementedException(); }
@@ -46,7 +46,7 @@ namespace CSJSONBacklog.Communicator
         /// <see cref="http://developer.nulab-inc.com/docs/backlog/api/2/get-versions"/>
         public IEnumerable<Version> GetVersionList(string projectIdOrKey)
         {
-            return GetT<IEnumerable<Version>>(string.Format("https://{0}.backlog.jp/api/v2/projects/{1}/versions?apiKey={2}", SpaceKey, projectIdOrKey, ApiKey));
+            return GetT<IEnumerable<Version>>(string.Format("https://{0}.backlog.com/api/v2/projects/{1}/versions?apiKey={2}", SpaceKey, projectIdOrKey, ApiKey));
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace CSJSONBacklog.Communicator
         /// <see cref="http://developer.nulab-inc.com/docs/backlog/api/2/get-categories"/>
         public IEnumerable<Category> GetCategoryList(string projectIdOrKey)
         {
-            return GetT<IEnumerable<Category>>(string.Format("https://{0}.backlog.jp/api/v2/projects/{1}/categories?apiKey={2}", SpaceKey, projectIdOrKey, ApiKey));
+            return GetT<IEnumerable<Category>>(string.Format("https://{0}.backlog.com/api/v2/projects/{1}/categories?apiKey={2}", SpaceKey, projectIdOrKey, ApiKey));
         }
 
         #endregion Project
@@ -69,7 +69,7 @@ namespace CSJSONBacklog.Communicator
         /// <see cref="http://developer.nulab-inc.com/docs/backlog/api/2/get-project-users"/>
         public IEnumerable<User> GetProjectUserList(string projectIdOrKey)
         {
-            return GetT<IEnumerable<User>>(string.Format("https://{0}.backlog.jp/api/v2/projects/{1}/users?apiKey={2}", SpaceKey, projectIdOrKey, ApiKey));
+            return GetT<IEnumerable<User>>(string.Format("https://{0}.backlog.com/api/v2/projects/{1}/users?apiKey={2}", SpaceKey, projectIdOrKey, ApiKey));
         }
 
         public User AddProjectUser(string projectIdOrKey) { throw new System.NotImplementedException(); }
@@ -84,7 +84,7 @@ namespace CSJSONBacklog.Communicator
         /// <see cref="http://developer.nulab-inc.com/docs/backlog/api/2/get-wikis"/>
         public IEnumerable<WikiPage> GetWikiPageList(string projectIdOrKey)
         {
-            return GetT<IEnumerable<WikiPage>>(string.Format("https://{0}.backlog.jp/api/v2/wikis?projectIdOrKey={1}&apiKey={2}", SpaceKey, projectIdOrKey, ApiKey));
+            return GetT<IEnumerable<WikiPage>>(string.Format("https://{0}.backlog.com/api/v2/wikis?projectIdOrKey={1}&apiKey={2}", SpaceKey, projectIdOrKey, ApiKey));
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace CSJSONBacklog.Communicator
         /// <see cref="http://developer.nulab-inc.com/docs/backlog/api/2/get-wiki"/>
         public WikiPage GetWikiPage(string projectIdOrKey, int wikiId)
         {
-            return GetT<WikiPage>(string.Format("https://{0}.backlog.jp/api/v2/wikis/{1}?projectIdOrKey={2}&apiKey={3}", SpaceKey, wikiId, projectIdOrKey, ApiKey));
+            return GetT<WikiPage>(string.Format("https://{0}.backlog.com/api/v2/wikis/{1}?projectIdOrKey={2}&apiKey={3}", SpaceKey, wikiId, projectIdOrKey, ApiKey));
         }
         #endregion Project Wiki
 
@@ -105,7 +105,7 @@ namespace CSJSONBacklog.Communicator
         /// <see cref="http://developer.nulab-inc.com/docs/backlog/api/2/get-project-adminnistrators"/>
         public IEnumerable<User> GetProjectAdministratorList(string projectIdOrKey)
         {
-            return GetT<IEnumerable<User>>(string.Format("https://{0}.backlog.jp/api/v2/projects/{1}/administrators?apiKey={2}", SpaceKey, projectIdOrKey, ApiKey));
+            return GetT<IEnumerable<User>>(string.Format("https://{0}.backlog.com/api/v2/projects/{1}/administrators?apiKey={2}", SpaceKey, projectIdOrKey, ApiKey));
         }
 
         public User GetProjectAdministrator(string projectIdOrKey) { throw new System.NotImplementedException(); }
@@ -131,7 +131,7 @@ namespace CSJSONBacklog.Communicator
         /// <see cref="http://developer.nulab-inc.com/docs/backlog/api/2/get-project-activities"/>
         public IEnumerable<Activity> GetProjectRecentUpdateList(string projectIdOrKey, ActivityQuery query)
         {
-            return GetT<IEnumerable<Activity>>(string.Format("https://{0}.backlog.jp/api/v2/projects/{1}/activities?apiKey={2}&{3}", SpaceKey, projectIdOrKey, ApiKey, query.GetParametersForAPI()));
+            return GetT<IEnumerable<Activity>>(string.Format("https://{0}.backlog.com/api/v2/projects/{1}/activities?apiKey={2}&{3}", SpaceKey, projectIdOrKey, ApiKey, query.GetParametersForAPI()));
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace CSJSONBacklog.Communicator
         /// <see cref="http://developer.nulab-inc.com/docs/backlog/api/2/get-customfields"/>
         public IEnumerable<CustomField> GetCustomFieldList(string projectIdOrKey)
         {
-            return GetT<IEnumerable<CustomField>>(string.Format("https://{0}.backlog.jp/api/v2/projects/{1}/customFields?apiKey={2}", SpaceKey, projectIdOrKey, ApiKey));
+            return GetT<IEnumerable<CustomField>>(string.Format("https://{0}.backlog.com/api/v2/projects/{1}/customFields?apiKey={2}", SpaceKey, projectIdOrKey, ApiKey));
         }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace CSJSONBacklog.Communicator
         /// <see cref="http://developer.nulab-inc.com/docs/backlog/api/2/get-issuetypes"/>
         public IEnumerable<IssueType> GetIssueTypeList(string projectIdOrKey)
         {
-            return GetT<IEnumerable<IssueType>>(string.Format("https://{0}.backlog.jp/api/v2/projects/{1}/issueTypes?apiKey={2}", SpaceKey, projectIdOrKey, ApiKey));
+            return GetT<IEnumerable<IssueType>>(string.Format("https://{0}.backlog.com/api/v2/projects/{1}/issueTypes?apiKey={2}", SpaceKey, projectIdOrKey, ApiKey));
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace CSJSONBacklog.Communicator
         /// <see cref="http://developer.nulab-inc.com/docs/backlog/api/2/get-project-diskusage"/>
         public DiskUsage GetProjectDiskUsage(string projectIdOrKey)
         {
-            return GetT<DiskUsage>(string.Format("https://{0}.backlog.jp/api/v2/projects/{1}/diskUsage?apiKey={2}", SpaceKey, projectIdOrKey, ApiKey));
+            return GetT<DiskUsage>(string.Format("https://{0}.backlog.com/api/v2/projects/{1}/diskUsage?apiKey={2}", SpaceKey, projectIdOrKey, ApiKey));
         }
 
         public IEnumerable<Issue> GetListofRecentlyViewedIssues(string projectIdOrKey)
@@ -196,7 +196,7 @@ namespace CSJSONBacklog.Communicator
         /// <see cref="http://developer.nulab-inc.com/docs/backlog/api/2/get-git-repositories"/>
         public IEnumerable<GitRepository> GetListofGitRepositories(string projectIdOrKey)
         {
-            return GetT<IEnumerable<GitRepository>>(string.Format("https://{0}.backlog.jp/api/v2/git/repositories?apiKey={1}?projectIdOrKey={2}", SpaceKey, ApiKey, projectIdOrKey));
+            return GetT<IEnumerable<GitRepository>>(string.Format("https://{0}.backlog.com/api/v2/git/repositories?apiKey={1}?projectIdOrKey={2}", SpaceKey, ApiKey, projectIdOrKey));
         }
         #endregion misc
     }

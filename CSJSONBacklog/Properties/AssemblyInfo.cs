@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更してください。
 [assembly: AssemblyTitle("CSJSONBacklog")]
-[assembly: AssemblyDescription("Backlog(www.backlog.jp) APIv2 library.")]
+[assembly: AssemblyDescription("Backlog(www.backlog.com) APIv2 library.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("mtaniuchi")]
 [assembly: AssemblyProduct("CSJSONBacklog")]
