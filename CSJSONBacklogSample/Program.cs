@@ -19,8 +19,8 @@ namespace CSJSONBacklogSample
         /// </summary>
         static void Main(string[] args)
         {
-            string spaceName = Properties.Settings.Default.SpaceName;// must change!
-            string apiKey = Properties.Settings.Default.APIKey;// must change!
+            string spaceName = "your-space-key";// must change!
+            string apiKey = "your-api-key";// must change!
 
             // 1.get information
             EnforceGetSamples(spaceName, apiKey);
