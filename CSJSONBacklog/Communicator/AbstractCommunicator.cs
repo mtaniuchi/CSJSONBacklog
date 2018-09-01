@@ -64,7 +64,6 @@ namespace CSJSONBacklog.Communicator
                 Resource = resource,
             };
             request.AddQueryParameter("apiKey", ApiKey);
-            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
             request.JsonSerializer = new PatchJsonSerializer { ContentType = @"application/json" };
             request.AddJsonBody(value);
 
