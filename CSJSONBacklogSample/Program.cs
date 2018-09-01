@@ -26,7 +26,7 @@ namespace CSJSONBacklogSample
             EnforceGetSamples(spaceKey, apiKey);
 
             // 2.update information
-            //SampleOfUpdateIssue(spaceName, apiKey, "PROJ1");
+            SampleOfUpdateIssue(spaceKey, apiKey);
         }
 
 
@@ -52,21 +52,20 @@ namespace CSJSONBacklogSample
 
         #region UPDATE
 
-        private static void SampleOfUpdateIssue(string spaceName, string apiKey, string projectKey)
+        private static void SampleOfUpdateIssue(string spaceName, string apiKey)
         {
             var projectCommunicator = new ProjectCommunicator(spaceName, apiKey);
-            var projects = projectCommunicator.GetProjectList().ToList();
-            var proj = projects.FirstOrDefault(x => x.ProjectKey.Equals(projectKey));
+            var project = projectCommunicator.GetProjectList().FirstOrDefault();
 
             var issueCommunicator = new IssueCommunicator(spaceName, apiKey);
-            var count = issueCommunicator.GetIssuesCount(proj.Id);
+            var count = issueCommunicator.GetIssuesCount(project.Id);
 
-            Debug.WriteLine("\t" + proj + " " + count);
+            Debug.WriteLine("\t" + project + " " + count);
 
             // issues in a project
             var param = new IssueQuery
             {
-                ProjectIds = new List<int> { proj.Id },
+                ProjectIds = new List<int> { project.Id },
                 ParentChild = ParentChild.All,
                 Offset = 0,
                 Count = 100,// per 100 max
@@ -75,7 +74,7 @@ namespace CSJSONBacklogSample
             };
             var issue = issueCommunicator.GetIssues(param).FirstOrDefault();
 
-            issue.description += " Update by api @" + DateTime.Now;
+            issue.description += " / Update by api-test @" + DateTime.Now;
             issueCommunicator.UpdateIssue(issue);
         }
 
