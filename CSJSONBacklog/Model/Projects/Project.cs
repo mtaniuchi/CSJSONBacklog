@@ -13,7 +13,7 @@ namespace CSJSONBacklog.Model.Projects
         public string Name { get; set; }
         public bool ChartEnabled { get; set; }
         public bool SubTaskingEnabled { get; set; }
-        public TestFormattingRule TestFormattingRule { get; set; }
+        public TextFormattingRule TextFormattingRule { get; set; }
         public bool Archived { get; set; }
         public int DisplayOrder { get; set; }
 
@@ -27,7 +27,7 @@ namespace CSJSONBacklog.Model.Projects
     /// TestFormattingRule
     /// </summary>
     /// <see cref="http://developer.nulab-inc.com/docs/backlog/api/2/add-project"/>
-    public enum TestFormattingRule
+    public enum TextFormattingRule
     {
         Backlog,
         Markdown,
