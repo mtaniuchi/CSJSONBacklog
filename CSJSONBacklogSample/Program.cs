@@ -42,7 +42,7 @@ namespace CSJSONBacklogSample
             getInfoSample.PrintProjectDetails(projects);
 
             // print issues
-            foreach (var project in projects.Where(x => x.ProjectKey.Equals("SND")))
+            foreach (var project in projects)
             {
                 var issues = getInfoSample.GetIssues(project);
                 getInfoSample.PrintIssues(issues);
